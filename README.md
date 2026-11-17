@@ -12,6 +12,8 @@ Written for a Galaxy Watch broadcasting heart rate over BLE with a watch-side ap
 Open the folder in Android Studio and run (or Build > Build APK).
 The Gradle wrapper jar is not included. If sync fails, run `gradle wrapper` once.
 
+A debug-signed APK is also available under Releases.
+
 ## Usage
 1. Make sure the watch app is broadcasting. Disconnect other BLE clients (e.g. nRF Connect) first.
 2. Open HR Relay, enter the watch's MAC address and tap Start (grant the permissions).
@@ -37,13 +39,16 @@ To compare it numerically, copy it into an integer variable (Set Variable) first
 Tested:
 - Galaxy Watch Ultra with the "Heart for Bluetooth" watch app, on one Android phone
 - Receiving heart rate and storing it in a MacroDroid variable via the "Intent Received" trigger
+- `lost` / `recovered` are reported when heart rate stops and resumes
 
 Not tested yet:
-- Long runs with the phone screen off
-- Whether `lost` / `recovered` are reported correctly when the watch app is stopped and restarted
 - Other watches and phones
 
 This is an early version. Feedback and test reports are welcome.
+
+## Known issues
+
+- On my Galaxy Watch Ultra with "Heart for Bluetooth", heart rate updates stop (or become sparse) while the watch screen is off, even though the BLE connection stays up. Turning the watch screen on restores them. This seems to be a watch-side power-saving behaviour, not something this app can fix. `lost` / `recovered` reflect this.
 
 ## Notes
 - Only the standard Heart Rate Measurement format is parsed (8-bit and 16-bit values).
