@@ -15,9 +15,10 @@ The Gradle wrapper jar is not included. If sync fails, run `gradle wrapper` once
 A debug-signed APK is also available under Releases.
 
 ## Usage
-1. Make sure the watch app is broadcasting. Disconnect other BLE clients (e.g. nRF Connect) first.
-2. Open HR Relay, enter the watch's MAC address and tap Start (grant the permissions).
-3. Tap "Disable battery optimization" and allow it.
+1. Make sure the watch is broadcasting heart rate (for a Galaxy Watch: start the watch app such as "Heart for Bluetooth"; for a HUAWEI WATCH GT 4: start heart rate sharing from the watch's sharing menu). Disconnect other BLE clients (e.g. nRF Connect) first.
+2. Find the watch's MAC address. On some watches, the broadcasting address is different from the one in the paired devices list. In that case, use nRF Connect's Scanner tab and look for the device name shown on the watch's sharing screen. (On the HUAWEI WATCH GT 4 the address was the same after stopping and restarting the sharing.)
+3. Open HR Relay, enter the MAC address and tap Start (grant the permissions).
+4. Tap "Disable battery optimization" and allow it.
 
 ## Broadcast intents
 | Action | Extras |
@@ -38,10 +39,12 @@ To compare it numerically, copy it into an integer variable (Set Variable) first
 
 Tested:
 - Galaxy Watch Ultra with the "Heart for Bluetooth" watch app, on one Android phone
+- HUAWEI WATCH GT 4 with its built-in heart rate sharing, on one Android phone
 - Receiving heart rate and storing it in a MacroDroid variable via the "Intent Received" trigger
-- `lost` / `recovered` are reported when heart rate stops and resumes
+- `lost` / `recovered` are reported when heart rate stops and resumes (Galaxy Watch Ultra)
 
 Not tested yet:
+- Behaviour with the watch screen off on the HUAWEI WATCH GT 4
 - Other watches and phones
 
 This is an early version. Feedback and test reports are welcome.
