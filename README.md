@@ -15,7 +15,7 @@ The Gradle wrapper jar is not included. If sync fails, run `gradle wrapper` once
 A debug-signed APK is also available under Releases.
 
 ## Usage
-1. Make sure the watch is broadcasting heart rate. Galaxy Watch: start a watch-side app such as "Heart for Bluetooth". HUAWEI WATCH GT 4: start heart rate sharing from the watch's sharing menu. Amazfit GTR 4: start the watch's built-in "heart rate push" app. Garmin vivoactive 5: turn on the heart rate broadcast mode in the controls menu. Disconnect other BLE clients (e.g. nRF Connect) first.
+1. Make sure the watch is broadcasting heart rate. Galaxy Watch: start a watch-side app such as "Heart for Bluetooth". HUAWEI WATCH GT 4: start heart rate sharing from the watch's sharing menu. Amazfit GTR 4: start the watch's built-in "heart rate push" app. Garmin vivoactive 5 / Enduro: turn on the heart rate broadcast mode in the controls menu. Disconnect other BLE clients (e.g. nRF Connect) first.
 2. Find the watch's MAC address. Use nRF Connect's Scanner tab and look for the device name shown on the watch (its sharing screen, if it has one). On the Galaxy Watch Ultra, the Amazfit GTR 4 and the Garmin vivoactive 5 the address was the same as the one in the paired devices list; on the HUAWEI WATCH GT 4 it was different. On the GT 4, the GTR 4 and the vivoactive 5 the address stayed the same after stopping and restarting the sharing.
 3. Open HR Relay, enter the MAC address and tap Start (grant the permissions).
 4. Tap "Disable battery optimization" and allow it.
@@ -41,12 +41,12 @@ Tested:
 - Galaxy Watch Ultra with the "Heart for Bluetooth" watch app, on one Android phone
 - HUAWEI WATCH GT 4 with its built-in heart rate sharing, on one Android phone
 - Amazfit GTR 4 with its built-in "heart rate push" app, on one Android phone
-- Garmin vivoactive 5 with its heart rate broadcast mode, on one Android phone
+- Garmin vivoactive 5 and Garmin Enduro with their heart rate broadcast mode, on one Android phone
 - Receiving heart rate and storing it in a MacroDroid variable via the "Intent Received" trigger
 - `lost` / `recovered` are reported when heart rate stops and resumes (Galaxy Watch Ultra)
 
 Not tested yet:
-- Behaviour with the watch screen off on the HUAWEI WATCH GT 4, the Amazfit GTR 4 and the Garmin vivoactive 5
+- Behaviour with the watch screen off on the HUAWEI WATCH GT 4, the Amazfit GTR 4, the Garmin vivoactive 5 and the Garmin Enduro
 - Long-term stability on these watches
 - Other watches and phones
 
