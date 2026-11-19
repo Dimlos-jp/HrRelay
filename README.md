@@ -6,7 +6,7 @@ Use MacroDroid's "Intent Received" trigger to handle the data; all thresholds, n
 and SMS are done in your macros.
 
 Written for a Galaxy Watch broadcasting heart rate over BLE with a watch-side app
-(e.g. "Heart for Bluetooth"). It works with any BLE device that exposes the standard Heart Rate service.
+(e.g. "Heart for Bluetooth", or [HrBroadcast](https://github.com/Dimlos-jp/HrBroadcast)). It works with any BLE device that exposes the standard Heart Rate service.
 
 ## Build
 Open the folder in Android Studio and run (or Build > Build APK).
@@ -15,7 +15,7 @@ The Gradle wrapper jar is not included. If sync fails, run `gradle wrapper` once
 A debug-signed APK is also available under Releases.
 
 ## Usage
-1. Make sure the watch is broadcasting heart rate. Galaxy Watch: start a watch-side app such as "Heart for Bluetooth". HUAWEI WATCH GT 4: start heart rate sharing from the watch's sharing menu. Amazfit GTR 4: start the watch's built-in "heart rate push" app. Garmin vivoactive 5 / Enduro: turn on the heart rate broadcast mode in the controls menu. Disconnect other BLE clients (e.g. nRF Connect) first.
+1. Make sure the watch is broadcasting heart rate. Galaxy Watch: start a watch-side app such as "Heart for Bluetooth" or [HrBroadcast](https://github.com/Dimlos-jp/HrBroadcast). HUAWEI WATCH GT 4: start heart rate sharing from the watch's sharing menu. Amazfit GTR 4: start the watch's built-in "heart rate push" app. Garmin vivoactive 5 / Enduro: turn on the heart rate broadcast mode in the controls menu. Disconnect other BLE clients (e.g. nRF Connect) first.
 2. Find the watch's MAC address. Use nRF Connect's Scanner tab and look for the device name shown on the watch (its sharing screen, if it has one). On the Galaxy Watch Ultra, the Amazfit GTR 4 and the Garmin vivoactive 5 the address was the same as the one in the paired devices list; on the HUAWEI WATCH GT 4 it was different. On the GT 4, the GTR 4 and the vivoactive 5 the address stayed the same after stopping and restarting the sharing.
 3. Open HR Relay, enter the MAC address and tap Start (grant the permissions).
 4. Tap "Disable battery optimization" and allow it.
@@ -39,6 +39,7 @@ To compare it numerically, copy it into an integer variable (Set Variable) first
 
 Tested:
 - Galaxy Watch Ultra with the "Heart for Bluetooth" watch app, on one Android phone
+- Galaxy Watch Ultra with the [HrBroadcast](https://github.com/Dimlos-jp/HrBroadcast) watch app, on one Android phone
 - HUAWEI WATCH GT 4 with its built-in heart rate sharing, on one Android phone
 - Amazfit GTR 4 with its built-in "heart rate push" app, on one Android phone
 - Garmin vivoactive 5 and Garmin Enduro with their heart rate broadcast mode, on one Android phone
@@ -54,7 +55,7 @@ This is an early version. Feedback and test reports are welcome.
 
 ## Known issues
 
-- On my Galaxy Watch Ultra with "Heart for Bluetooth", heart rate updates stop (or become sparse) while the watch screen is off, even though the BLE connection stays up. Turning the watch screen on restores them. This seems to be a watch-side power-saving behaviour, not something this app can fix. `lost` / `recovered` reflect this.
+- On my Galaxy Watch Ultra with "Heart for Bluetooth", heart rate updates stop (or become sparse) while the watch screen is off, even though the BLE connection stays up. Turning the watch screen on restores them. This is a watch-side behaviour that this app cannot fix. `lost` / `recovered` reflect this. [HrBroadcast](https://github.com/Dimlos-jp/HrBroadcast) is a watch-side app written to avoid it on Galaxy Watch.
 
 ## Notes
 - Only the standard Heart Rate Measurement format is parsed (8-bit and 16-bit values).
