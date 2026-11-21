@@ -16,7 +16,7 @@ A debug-signed APK is also available under Releases.
 
 ## Usage
 1. Make sure the watch is broadcasting heart rate. Galaxy Watch: start a watch-side app such as "Heart for Bluetooth" or [HrBroadcast](https://github.com/Dimlos-jp/HrBroadcast). HUAWEI WATCH GT 4: start heart rate sharing from the watch's sharing menu. Amazfit GTR 4: start the watch's built-in "heart rate push" app. Garmin vivoactive 5 / Enduro: turn on the heart rate broadcast mode in the controls menu. Disconnect other BLE clients (e.g. nRF Connect) first.
-2. Find the watch's MAC address. Use nRF Connect's Scanner tab and look for the device name shown on the watch (its sharing screen, if it has one). On the Galaxy Watch Ultra, the Amazfit GTR 4 and the Garmin vivoactive 5 the address was the same as the one in the paired devices list; on the HUAWEI WATCH GT 4 it was different. On the GT 4, the GTR 4 and the vivoactive 5 the address stayed the same after stopping and restarting the sharing.
+2. Find the watch's MAC address. Use nRF Connect's Scanner tab and look for the device name shown on the watch (its sharing screen, if it has one). On most watches the address is the same as the one in the paired devices list; on the HUAWEI WATCH GT 4 it was different (see the table below). On the GT 4, the GTR 4 and the vivoactive 5 the address stayed the same after stopping and restarting the sharing.
 3. Open HR Relay, enter the MAC address and tap Start (grant the permissions).
 4. Tap "Disable battery optimization" and allow it.
 
@@ -33,22 +33,32 @@ All extras are sent as strings, because MacroDroid can only store string extras.
 
 ## MacroDroid
 Add an "Intent Received" trigger with the action above, and store the extra `bpm` in a string variable.
-To compare it numerically, copy it into an integer variable (Set Variable) first.
+To compare it numerically, copy it into an integer variable first: use "Set Variable" on an integer
+variable with the value `{strval=bpm_str}` (replace `bpm_str` with the name of your string variable).
+
+## Tested watches
+
+| Watch | Watch-side app / mode | Works | Screen off | Address same as paired list |
+|---|---|---|---|---|
+| Galaxy Watch Ultra | [HrBroadcast](https://github.com/Dimlos-jp/HrBroadcast) | Yes | Yes | Yes |
+| Galaxy Watch Ultra | Heart for Bluetooth | Yes | Stops or sparse | Yes |
+| Galaxy Watch 4 | [HrBroadcast](https://github.com/Dimlos-jp/HrBroadcast) | Yes (user report) | Yes (user report) | - |
+| Galaxy Watch 4 | Heart for Bluetooth | Yes (user report) | Yes (user report) | - |
+| HUAWEI WATCH GT 4 | Built-in heart rate sharing | Yes | Not tested | No |
+| Amazfit GTR 4 | Built-in "heart rate push" app | Yes | Not tested | Yes |
+| Garmin vivoactive 5 | Heart rate broadcast mode | Yes | Not tested | Yes |
+| Garmin Enduro | Heart rate broadcast mode | Yes | Not tested | - |
+
+My own tests used one Android phone per watch. "Works" means heart rate reached MacroDroid through the "Intent Received" trigger.
 
 ## Status
 
 Tested:
-- Galaxy Watch Ultra with the "Heart for Bluetooth" watch app, on one Android phone
-- Galaxy Watch Ultra with the [HrBroadcast](https://github.com/Dimlos-jp/HrBroadcast) watch app, on one Android phone
-- HUAWEI WATCH GT 4 with its built-in heart rate sharing, on one Android phone
-- Amazfit GTR 4 with its built-in "heart rate push" app, on one Android phone
-- Garmin vivoactive 5 and Garmin Enduro with their heart rate broadcast mode, on one Android phone
 - Receiving heart rate and storing it in a MacroDroid variable via the "Intent Received" trigger
 - `lost` / `recovered` are reported when heart rate stops and resumes (Galaxy Watch Ultra)
 
 Not tested yet:
-- Behaviour with the watch screen off on the HUAWEI WATCH GT 4, the Amazfit GTR 4, the Garmin vivoactive 5 and the Garmin Enduro
-- Long-term stability on these watches
+- Long-term stability (hours) on any of the watches above
 - Other watches and phones
 
 This is an early version. Feedback and test reports are welcome.
