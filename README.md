@@ -48,8 +48,11 @@ variable with the value `{strval=bpm_str}` (replace `bpm_str` with the name of y
 | Amazfit GTR 4 | Built-in "heart rate push" app | Yes | Not tested | Yes |
 | Garmin vivoactive 5 | Heart rate broadcast mode | Yes | Not tested | Yes |
 | Garmin Enduro | Heart rate broadcast mode | Yes | Not tested | - |
+| Xiaomi Smart Band 10 | Built-in heart rate broadcast | Yes | Not tested | No |
 
 My own tests used one Android phone per watch. "Works" means heart rate reached MacroDroid through the "Intent Received" trigger.
+
+Xiaomi Smart Band 10: heart rate broadcast has to be enabled manually on the band. Readings kept arriving without gaps in a 5-minute test. Continuous heart rate monitoring on the band can only be set for up to 30 minutes at a time; after that the band goes back to its normal power-saving measurement. In that case the measurement itself stops (rather than only the BLE broadcast), so readings can stop in long runs.
 
 ## Status
 
