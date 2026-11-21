@@ -52,7 +52,7 @@ variable with the value `{strval=bpm_str}` (replace `bpm_str` with the name of y
 
 My own tests used one Android phone per watch. "Works" means heart rate reached MacroDroid through the "Intent Received" trigger.
 
-Xiaomi Smart Band 10: heart rate broadcast has to be enabled manually on the band. Readings kept arriving without gaps in a 5-minute test. Continuous heart rate monitoring on the band can only be set for up to 30 minutes at a time; after that the band goes back to its normal power-saving measurement. In that case the measurement itself stops (rather than only the BLE broadcast), so readings can stop in long runs.
+Xiaomi Smart Band 10: heart rate broadcast has to be enabled manually on the band. Readings kept arriving without gaps in a 5-minute test. Continuous heart rate monitoring on the band can only be set for up to 30 minutes at a time. What happens after that has not been tested; since the band normally measures less often to save battery, the measurement itself (not only the BLE broadcast) may stop or become sparse in long runs.
 
 ## Status
 
